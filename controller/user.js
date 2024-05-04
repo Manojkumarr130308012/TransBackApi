@@ -43,13 +43,16 @@ class UserController {
                 userType:"Admin",
                 password : CryptoJS.AES.encrypt(newGender.password,process.env.SECRET).toString(),
             })
-            await newUser.save();
+            let createUser = await newUser.save();
+
+            let response = await userSchema.find({_id: createUser._id});
+
         return {
                 status: 'success',
-                msg: 'User created'
+                msg: 'User created',
+                result : response
             }
         } catch(err){
-            console.log("err",err);
             return {
 				status: false,
 				message: errorHandler.parseMongoError(err)
