@@ -49,6 +49,7 @@ class UserController {
                 msg: 'User created'
             }
         } catch(err){
+            console.log("err",err);
             return {
 				status: false,
 				message: errorHandler.parseMongoError(err)
