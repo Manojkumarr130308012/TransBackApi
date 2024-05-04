@@ -37,7 +37,6 @@ const s3 = new aws.S3({
 
 
 
-//locationdata
 const authRouter = require('./../router/auth');
 const userRouter = require('./../router/user');
 const driverRouter = require('./../router/driver');
