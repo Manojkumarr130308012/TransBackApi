@@ -214,7 +214,8 @@ class UserController {
 	async update(id, body) {
 
         try {
-            let response = await userSchema.update({_id: id}, body);
+            let updateRes = await userSchema.update({_id: id}, body);
+            let response = await userSchema.find({_id: id});
             return { status: "success", msg:"User Updated successfully",result: response, message: "Updated Successfully" };
         } catch (error) {
             return {
