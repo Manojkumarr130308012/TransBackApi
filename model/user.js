@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     },
     userLocation: {
         type: String,
-        required: true,
+        required: false,
     },
     godown: {
         type: String,
