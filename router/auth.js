@@ -11,7 +11,12 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    res.send(await userController.login(req.body));
+    let userLogin = await userController.login(req.body);
+    if(userLogin.message == 'Wrong Password'){
+        res.status(400).json({ status: false, message: "Wrong Password" });
+    }else{
+        res.send(userLogin);
+    }  
 });
 
 module.exports = router;
