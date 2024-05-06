@@ -5,10 +5,10 @@ const receiverlocationController = require('../controller/receiver_location');
 router.post('/add', async (req, res) => {
     res.send(await receiverlocationController.add(req.body));
 });
-router.get('/location', async (req, res) => {
+router.get('/receiver_location', async (req, res) => {
     res.send(await receiverlocationController.fetch());
 });
-router.get('/fetchlocation', async (req, res) => {
+router.get('/fetch_receiver_location', async (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	const response = await receiverlocationController.fetchdata(req.query.id);
 	res.send(response);
