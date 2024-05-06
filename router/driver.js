@@ -5,10 +5,10 @@ const driverController = require('../controller/driver');
 router.post('/add', async (req, res) => {
     res.send(await driverController.add(req.body));
 });
-router.get('/lorry', async (req, res) => {
+router.get('/all', async (req, res) => {
     res.send(await driverController.fetch());
 });
-router.get('/fetchlorry', async (req, res) => {
+router.get('/fetchdriver', async (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	const response = await driverController.fetchdata(req.query.id);
 	res.send(response);
