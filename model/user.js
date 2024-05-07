@@ -3,49 +3,50 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: false,
+        required: true,
     
     },
     fullName: {
         type: String,
-        required: false,
+        required: true,
     
     },
     email: {
         type: String,
-        required: false,
+        required: true,
         unique:true
     },
     password: {
         type: String,
-        required: false,
+        required: true,
     },
     phone : {
         type :String,
-        default : "0123456789"
+        default : "0123456789",
+        required: true
     },
     userType:{type:String,required:true,default:"Admin",enum:['staff','Admin']},
     userFilter: {
         type: Boolean,
-        required: false,
+        required: true,
         default : false
     },
     billEdit: {
         type: Boolean,
-        required: false,
+        required: true,
         default : false
     },
     userLocation: {
         type: String,
-        required: false,
+        required: true,
     },
     godown: {
         type: String,
-        required: false,
+        required: true,
     },
     billSeries: {
         type: String,
-        required: false,
+        required: true,
     }
 },{timestamps:true});
 

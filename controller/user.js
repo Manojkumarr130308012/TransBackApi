@@ -38,9 +38,16 @@ class UserController {
                 }
             }
             const newUser = new user({
-                username:newGender.username,
+                username : newGender.username,
+                fullName : newGender.fullName,
+                phone : newGender.phone,
+                userFilter : newGender.userFilter,
+                billEdit : newGender.billEdit,
+                userLocation : newGender.userLocation,
+                godown : newGender.godown,
+                billSeries : newGender.billSeries,
                 email : newGender.email,
-                userType:"Admin",
+                userType : newGender.userType,
                 password : CryptoJS.AES.encrypt(newGender.password,process.env.SECRET).toString(),
             })
             let createUser = await newUser.save();
