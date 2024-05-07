@@ -6,9 +6,10 @@ class LorryController {
 
     async add(farm){
 		try{
-			let response = await lorrySchema.create(farm);
-			return { status: "success",   msg:"Lorry Added successfully", result: response };
-		} catch(error){
+			let createresponse = await lorrySchema.create(farm);
+			let response = await userSchema.find({_id: createresponse._id});
+            return { status: "success",   msg:"data Created successfully", result: response };
+	} catch(error){
             return {
 				status: false,
 				message: errorHandler.parseMongoError(error)
@@ -20,10 +21,7 @@ class LorryController {
 		try{
 			let response = await lorrySchema.find({});
 			let count=Object.keys(response).length;
-			return {
-				response: response,
-				count:count
-			};
+			return { status: "success",   msg:"data get successfully", result: response };
 		} catch(error){
             return {
 				status: false,
@@ -48,10 +46,7 @@ class LorryController {
 	async delete(id){
 		try{
 			let response = await lorrySchema.deleteOne({_id: id});
-			return {
-				status: "success",
-				response: response
-			};
+			return { status: "success",   msg:"data Deleted successfully", result: response };
 		} catch(error){
             return {
 				status: false,
@@ -63,8 +58,9 @@ class LorryController {
 	async update(id, body) {
 
         try {
-            let response = await lorrySchema.update({_id: id}, body);
-            return { status: "success", msg:"Item Updated successfully",result: response };
+            let updateResponse = await lorrySchema.update({_id: id}, body);
+			let response = await lorrySchema.find({_id: id});
+			return { status: "success",   msg:"data Updated successfully", result: response };
         } catch (error) {
             return {
 				status: false,
