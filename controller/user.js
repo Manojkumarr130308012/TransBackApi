@@ -47,11 +47,8 @@ class UserController {
 
             let response = await userSchema.find({_id: createUser._id});
 
-        return {
-                status: 'success',
-                msg: 'User created',
-                result : response
-            }
+            return { status: "success",   msg:"data Created successfully", result: response };
+
         } catch(err){
             return {
 				status: false,
@@ -157,8 +154,9 @@ class UserController {
 
     async add(farm){
 		try{
-			let response = await userSchema.create(farm);
-			return { status: "success",   msg:"User Added successfully", result: response, message: "Added Successfully" };
+			let addResponse = await userSchema.create(farm);
+            let response = await userSchema.find({_id: addResponse._id});
+            return { status: "success",   msg:"data Created successfully", result: response };
 		} catch(error){
             return {
 				status: false,
@@ -171,10 +169,7 @@ class UserController {
 		try{
 			let response = await userSchema.find({});
 			let count=Object.keys(response).length;
-			return {
-				response: response,
-				count:count
-			};
+            return { status: "success",   msg:"data get successfully", result: response };
 		} catch(error){
             return {
 				status: false,
@@ -199,10 +194,7 @@ class UserController {
 	async delete(id){
 		try{
 			let response = await userSchema.deleteOne({_id: id});
-			return {
-				status: "success",
-				response: response
-			};
+            return { status: "success",   msg:"data Deleted successfully", result: response };
 		} catch(error){
             return {
 				status: false,
@@ -216,7 +208,7 @@ class UserController {
         try {
             let updateRes = await userSchema.update({_id: id}, body);
             let response = await userSchema.find({_id: id});
-            return { status: "success", msg:"User Updated successfully",result: response, message: "Updated Successfully" };
+            return { status: "success",   msg:"data Updated successfully", result: response };
         } catch (error) {
             return {
 				status: false,
