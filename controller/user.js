@@ -91,9 +91,14 @@ class UserController {
 
 
 
+           
             if(!user){
-                throw new Error('User not Found');
+                return {
+                    status:false,
+                    message :"User not found"
+                }
             }
+
 
             const decryptpassword = CryptoJS.AES.decrypt(user.password,process.env.SECRET);
             const depassword =  decryptpassword.toString(CryptoJS.enc.Utf8);
