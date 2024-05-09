@@ -50,4 +50,4 @@ const userSchema = new mongoose.Schema({
     }
 },{timestamps:true});
 
-module.exports = new mongoose.model('user', userSchema);
+module.exports = new mongoose.model('truckuser', userSchema);
