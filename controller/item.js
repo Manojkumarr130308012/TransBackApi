@@ -18,8 +18,6 @@ class ItemController {
 	
 	async fetch(){
 		try{
-
-            
 			let response = await itemSchema.find({});
 			let count=Object.keys(response).length;
 			return {
